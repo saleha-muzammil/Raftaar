@@ -23,6 +23,7 @@ app.use(passport.initialize());
 app.use(passport.session());
 app.use('/api/user', require('./routes/user'));
 app.use('/google', require('./routes/google'));
+app.use('/api/announcement', require('./routes/announcement'));
 
 app.get('/', isLoggedIn, async(req, res) => {
     const {name, email, picture} = req.user._json;
@@ -33,15 +34,15 @@ app.get('/', isLoggedIn, async(req, res) => {
     }
 
     const user =  await User.findOne({email});
-    let token; 
+    let token;
 
     if (!user)
     {
         const new_user = await User.create({name, email, picture});
         token = jwt.sign({id: new_user._id}, JWT_SECRET);
-    }    
-
-    token = jwt.sign({id: user._id}, JWT_SECRET);
+    }
+    else    
+    	token = jwt.sign({id: user._id}, JWT_SECRET);
     
     return res.json({token});
 });
