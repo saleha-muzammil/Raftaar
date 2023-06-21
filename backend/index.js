@@ -41,8 +41,10 @@ app.get('/', isLoggedIn, async(req, res) => {
         const new_user = await User.create({name, email, picture});
         token = jwt.sign({id: new_user._id}, JWT_SECRET);
     }
-    else    
+    else  
+    {  
     	token = jwt.sign({id: user._id}, JWT_SECRET);
+    }
     
     return res.json({token});
 });
