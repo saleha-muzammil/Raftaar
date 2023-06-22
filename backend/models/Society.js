@@ -1,11 +1,10 @@
 const mongoose = require('mongoose');
 
-const User = mongoose.Schema(
+const Society = mongoose.Schema(
 {
     picture:
     {
         type: String,
-        required: true
     },
     
     name: 
@@ -22,4 +21,4 @@ const User = mongoose.Schema(
     } 
 });
 
-module.exports = mongoose.model('users', User);
+module.exports = mongoose.model('societies', Society);

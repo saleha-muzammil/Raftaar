@@ -1,35 +1,59 @@
 import React, { useEffect, useState } from 'react'
+import Announcement from './components/Announcement';
 
 const Profile = ({token}) => {
 
   const [user, setUser] = useState({}); 
+  const [announcements, setAnnouncements] = useState([]);
   const [rendered, setRendered] = useState(false);
+
+  const getUser = async() =>
+  {
+      let response = await fetch('http://localhost:5000/api/user', {
+          method: "GET", 
+          mode: "cors", 
+          cache: "no-cache", 
+          credentials: "include", 
+          headers: {
+            "Content-Type": "application/json",
+            "auth-token": token
+          },
+          redirect: "follow", 
+          referrerPolicy: "no-referrer",
+      });
+        
+      response = await response.json();
+      console.log(response);
+      setUser(response);
+      setRendered(true);
+  }
+
+  const getAnnouncements = async() =>
+  {
+      let response = await fetch('http://localhost:5000/api/announcement', {
+          method: "GET", 
+          mode: "cors", 
+          cache: "no-cache", 
+          credentials: "include", 
+          headers: {
+            "Content-Type": "application/json",
+            "auth-token": token
+          },
+          redirect: "follow", 
+          referrerPolicy: "no-referrer",
+      });
+        
+      response = await response.json();
+      console.log(response);
+      setAnnouncements(response);
+  }
 
   useEffect(() =>
   {
-    const getUser = async() =>
-    {
-        let response = await fetch('http://localhost:5000/api/user', {
-            method: "GET", 
-            mode: "cors", 
-            cache: "no-cache", 
-            credentials: "include", 
-            headers: {
-              "Content-Type": "application/json",
-              "auth-token": token
-            },
-            redirect: "follow", 
-            referrerPolicy: "no-referrer",
-        });
-          
-        response = await response.json();
-        setUser(response);
-        setRendered(true);
-    }
-    
     if (!rendered)
     {
-        getUser();
+      getUser();
+      getAnnouncements();
     }
   });
 
@@ -42,7 +66,7 @@ const Profile = ({token}) => {
             </figure>
         </section>
         <section className=''>
-            <p className='text-center text-[#ededed99]'>Your personalized content will be displayed here</p>
+            {announcements.length === 0 ? <p className='text-center text-[#ededed99]'>Your personalized content will be displayed here</p>: announcements.map(r => <Announcement announcement = {r}/>)}
         </section>
     </div>
   )

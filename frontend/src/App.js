@@ -37,15 +37,10 @@ function App() {
     }
   })
 
-  const loginWithGoogle = async() =>
-  {
-    window.open('http://localhost:5000/google', "_self");
-  }
-
   return (
     <>
     <Routes>
-      <Route element = {token?.length > 0 && token !== "FETCHING..." ? <Profile token = {token}/> : <LoginPage loginWithGoogle = {loginWithGoogle} />} index />
+      <Route element = {token?.length > 0 && token !== "FETCHING..." ? <Profile token = {token}/> : <LoginPage />} index />
       <Route element = {<Success setToken = {setToken}/>} path = "/login-successful" /> 
     </Routes>
     </>

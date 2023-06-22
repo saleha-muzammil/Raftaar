@@ -1,7 +1,12 @@
 import React from 'react'
 import googleIcon from './assets/icons/google-color-svgrepo-com.svg';
 
-const LoginPage = ({loginWithGoogle}) => {
+const loginWithGoogle = async() =>
+{
+  window.open('http://localhost:5000/google', "_self");
+}
+
+const LoginPage = () => {
   return (
     <div className="grid min-h-screen text-[#101010ee]">
       <section className='flex flex-col space-y-5 justify-center bg-[#101010ee] px-10 z-10'>

@@ -10,8 +10,8 @@ const Announcement = mongoose.Schema(
 
     society:
     {
-        type: mongoose.Schema.Types.ObjectId, ref: 'socities',
-
+        type: mongoose.Schema.Types.ObjectId, 
+        ref: 'societies'
     },
  
     description: 
@@ -23,7 +23,7 @@ const Announcement = mongoose.Schema(
     date:
     {
         type: Date,
-        required: true
+        default: Date.now()
     }, 
 
     image:
@@ -31,9 +31,10 @@ const Announcement = mongoose.Schema(
         type: String
     },
 
-    user:
+    admin:
     {
-        type: mongoose.Schema.Types.ObjectId, ref: 'users' ,
+        type: mongoose.Schema.Types.ObjectId, 
+        ref: 'admins',
         required: true
     }
 
