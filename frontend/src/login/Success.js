@@ -12,7 +12,6 @@ const Success = ({setToken}) => {
 
   return (
     <div className='min-h-screen bg-[#101010ed]'>
-       
     </div>
   )
 }

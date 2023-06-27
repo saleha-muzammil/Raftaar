@@ -1,43 +1,46 @@
-Raftar
+**Raftaar**
+
+(Note : 
+strikethrough ~~ on both sides
+bold ** on both sides)
+
+**Raza:** 
+~~login~~
+~~api integration~~
+~~profiling~~
+societies , admins , announcements
 
 
-Timeline:
-tmrw: raza-> societies , admins , announcements
-saleha-> parsoun -> gpa calculator / timetable generator 
-24th june -> low key front end, crud implementation 
+**Saleha:**
+ ~~sgpa calculator~~
+ ~~ cgpa from sgpas~~
+cgpa from prev cgpa (almost done)
+timetable generator (figuring it out)
+will add grading criteria (after we figure out ui)
 
+**TO DO:**
+Almost everything 
+
+ASAP:
+1.figure out ui (pages etc)
+2.crud implementation 
+3.Societies 
+4.Timeline: Upcoming events today, this week, next week , month , filter 
+
+Pending: 
+Job Portal
+
+Optional:
+outline 
+forum 
+notifications 
 
 Goal: 10th july tak ban jaye
 
-Core parts:
 
 
-Working on it 
-Gpa calculator
-grading criteria  
-Timetable generator/ teachers  -> excel sheet 
-Societies 
-events/ announcements
-
-To DO:
-programme outline                                      
-Notifications 
-Job portal 
-Forum / blogs 
-
-Done:
-login-> google api 
-
-
-
-
-Access: 
-Admin access  - > timetable , grading criteria , jobs, announcements, upcoming events , emails enter 
-
-
-Timeline 
-Upcoming events today, this week, next week , month , filter 
- 
+Admin view:
+Can alter timetable , grading criteria , jobs, announcements, upcoming events , emails enter 
 
 User story #2 
 Admin should be able to add a society -> name , logo , description , link to community 
@@ -55,13 +58,3 @@ Societies  -> email  (no access)
 events -> society name/email , date, venue , time (status) , image , description 
 Announcements -> link, name
 job-> company name, link, deadline, form , title, description, requirements , date posted , graphic 
-
-Forum 
-
-
-
-
-
-
-
-
