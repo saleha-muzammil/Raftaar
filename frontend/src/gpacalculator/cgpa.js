@@ -9,14 +9,20 @@ function CGPACalc() {
   const [fields, setFields] = useState([]);
 
 
-  const handleSubmit0 = ({sgpa, cgpa, newcredits, prevcredits}) =>
-  {
-    console.log(sgpa, newcredits);
-    let newgpa = (sgpa* newcredits) + (cgpa*prevcredits) ;
-    newgpa/= (newcredits + prevcredits);
-
-    setGPA0((newgpa).toFixed(2));
-  }
+  const handleSubmit0 = (values) => {
+    const { sgpa, cgpa, newcredits, prevcredits } = values;
+  
+    const totalCredits = parseFloat(newcredits) + parseFloat(prevcredits);
+    let newgpa = (parseFloat(sgpa) * parseFloat(newcredits)) + (parseFloat(cgpa) * parseFloat(prevcredits));
+    
+    if (totalCredits > 0) {
+      newgpa /= totalCredits;
+      setGPA0(newgpa.toFixed(2));
+    } else {
+      setGPA0(0.0);
+    }
+  };
+  
 
   const handleSubmit = ({sgpa, credits}) =>
   {
@@ -58,52 +64,50 @@ function CGPACalc() {
 
 {/* needs to be edited */}
 
-      {/* <mark className = "text-gray-200 bg-zinc-600 px-2 py-1 rounded-md">CGPA - {GPA0}</mark>
-      <br/> */}
-      {/* <Formik
+      <mark className="text-gray-200 bg-zinc-600 px-2 py-1 rounded-md">CGPA - {GPA0}</mark>
+      <br/>
+<Formik
   onSubmit={handleSubmit0}
-  initialValues={{ sgpa:0.0, cgpa: 0.0, newcredits:0,  prevcredits: 0 }}
+  initialValues={{ sgpa: 0.0, cgpa: 0.0, newcredits: 0, prevcredits: 0 }}
 >
   {({ values, setFieldValue }) => (
     <Form>
-      {fields.map((f) => (
-        <section key={f}>
-          <input
-            type="number"
-            name={`cgpa[${f}]`}
-            className="text-gray-200 bg-gray-700 rounded-sm my-2 py-1 focus:outline-0 px-1"
-            placeholder="Previous CGPA"
-            value={values.cgpa[f] || ""}
-            onChange={(e) => setFieldValue(`cgpa[${f}]`, e.target.value)}
-          />
-          <input
-            type="number"
-            name={`prevcredits[${f}]`}
-            className="text-gray-200 bg-gray-700 rounded-sm my-2 py-1 focus:outline-0 px-1"
-            placeholder="Previous Credits"
-            value={values.prevcredits[f] || ""}
-            onChange={(e) => setFieldValue(`prevcredits[${f}]`, e.target.value)}
-          />
-          <input
-            type="number"
-            step="0.001"
-            name={`sgpa[${f}]`}
-            className="text-gray-200 bg-gray-700 rounded-sm my-2 py-1 focus:outline-0 px-1"
-            placeholder="SGPA"
-            value={values.sgpa[f] || ""}
-            onChange={(e) => setFieldValue(`sgpa[${f}]`, e.target.value)}
-          />
-          <input
-            type="number"
-            name={`credits[${f}]`}
-            className="text-gray-200 bg-gray-700 rounded-sm my-2 py-1 focus:outline-0 px-1"
-            placeholder="New Credits"
-            value={values.credits[f] || ""}
-            onChange={(e) => setFieldValue(`credits[${f}]`, e.target.value)}
-          />
-        </section>
-      ))}
-            <button
+      <section>
+        <input
+          type="number"
+          name="cgpa"
+          className="text-gray-200 bg-gray-700 rounded-sm my-2 py-1 focus:outline-0 px-1"
+          placeholder="Previous CGPA"
+          value={values.cgpa || ""}
+          onChange={(e) => setFieldValue("cgpa", e.target.value)}
+        />
+        <input
+          type="number"
+          name="prevcredits"
+          className="text-gray-200 bg-gray-700 rounded-sm my-2 py-1 focus:outline-0 px-1"
+          placeholder="Previous Credits"
+          value={values.prevcredits || ""}
+          onChange={(e) => setFieldValue("prevcredits", e.target.value)}
+        />
+        <input
+          type="number"
+          step="0.001"
+          name="sgpa"
+          className="text-gray-200 bg-gray-700 rounded-sm my-2 py-1 focus:outline-0 px-1"
+          placeholder="SGPA"
+          value={values.sgpa || ""}
+          onChange={(e) => setFieldValue(`sgpa`, e.target.value)}
+        />
+        <input
+          type="number"
+          name="credits"
+          className="text-gray-200 bg-gray-700 rounded-sm my-2 py-1 focus:outline-0 px-1"
+          placeholder="New Credits"
+          value={values.newcredits || ""}
+          onChange={(e) => setFieldValue("newcredits", e.target.value)}
+        />
+      </section>
+      <button
         type="submit"
         className="my-2 block bg-neutral-600 px-2 py-1 rounded-sm"
       >
@@ -111,7 +115,8 @@ function CGPACalc() {
       </button>
     </Form>
   )}
-</Formik> */}
+</Formik>
+
 
       <mark className = "text-gray-200 bg-zinc-600 px-2 py-1 rounded-md">CGPA - {GPA}</mark>
       <br />
