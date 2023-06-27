@@ -14,7 +14,7 @@ societies , admins , announcements
 **Saleha:**
  ~~sgpa calculator~~
  ~~ cgpa from sgpas~~
-cgpa from prev cgpa (almost done)
+~~cgpa from prev cgpa~~
 timetable generator (figuring it out)
 will add grading criteria (after we figure out ui)
 

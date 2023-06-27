@@ -61,9 +61,6 @@ function CGPACalc() {
   return (
     <div className="App-header text-gray-200">
 
-
-{/* needs to be edited */}
-
       <mark className="text-gray-200 bg-zinc-600 px-2 py-1 rounded-md">CGPA - {GPA0}</mark>
       <br/>
 <Formik
